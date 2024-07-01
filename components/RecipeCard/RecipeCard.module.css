@@ -1,0 +1,14 @@
+.recipe-card {
+    width: 49%;
+    display: flex;
+    flex-direction: row;
+    border: solid 1px grey;
+    padding: 1rem;
+    gap: 12px;
+}
+
+.recipe-card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
