@@ -11,7 +11,8 @@ const RecipeFilterSelect = () => {
     const [getRecipeParams, setRecipeParams] = useState<RecipeParamsInterface>({
         diet: 'balanced',
         mealType: 'Dinner',
-        dishType: 'Main'
+        dishType: 'Main',
+        health: ''
     });
 
     const getRecipiesCall = async () => {
@@ -20,7 +21,7 @@ const RecipeFilterSelect = () => {
 
     useEffect(() => {
         if(getLoader) {
-        getRecipiesCall();
+            getRecipiesCall();
         }
         setLoader(false);
         console.log('runs')
@@ -31,14 +32,16 @@ const RecipeFilterSelect = () => {
     const [getLoader, setLoader] = useState<Boolean>(true);
 
     function onFilterChange(value: {[KEY: string]: String}) {
+        console.log(getRecipeParams, 'test')
         setRecipeParams(
             (oldState => {
                 return {...oldState, ...value}
             })
         );
+        setLoader(true)
     }
 
-    const RecipeList = getData?.hits.map((recipe, index) => {
+    const RecipeList = getData?.hits?.map((recipe, index) => {
         return (           
            <RecipeCard key={index} props={recipe}/>
         );
@@ -46,16 +49,32 @@ const RecipeFilterSelect = () => {
 
     return (
         <>
+            <span>Meal Type:</span>
+            <ul className={classes["filter-list"]}>
+                <li onClick={() => onFilterChange({'mealType': 'breakfast'})}>Breakfast</li>
+                <li onClick={() => onFilterChange({'mealType': 'Dinner'})}>Dinner</li>
+                <li onClick={() => onFilterChange({'mealType': 'Lunch'})}>Lunch</li>
+                <li onClick={() => onFilterChange({'mealType': 'Snack'})}>Snack</li>
+                <li onClick={() => onFilterChange({'mealType': 'Teatime'})}>TeaTime</li>
+            </ul>
+            <span>Diet</span>
             <ul className={classes["filter-list"]}>
                 <li onClick={() => onFilterChange({'diet': 'balanced'})}>Balanced</li>
                 <li onClick={() => onFilterChange({'diet': 'high-fiber'})}>High Fiber</li>
-                <li onClick={() => onFilterChange({'mealType': 'breakfast'})}>Breakfast</li>
-                <li onClick={() => onFilterChange({'mealType': 'Dinner'})}>Dinner</li>
-                <li onClick={() => onFilterChange({'mealType': 'Snack'})}>Snack</li>
+                <li onClick={() => onFilterChange({'diet': 'high-protein'})}>High Protein</li>
+                <li onClick={() => onFilterChange({'diet': 'low-carb'})}>Low Carb</li>
+                <li onClick={() => onFilterChange({'diet': 'low-fat'})}>Low Fat</li>
+                <li onClick={() => onFilterChange({'diet': 'low-sodium'})}>Low Sodium</li>
+            </ul>
+            <span>Health</span>
+            <ul className={classes["filter-list"]}>
+                <li onClick={() => onFilterChange({'health': 'alchohol-cocktail'})}>Alchohol Cocktail</li>
+                <li onClick={() => onFilterChange({'health': 'alchohol-free'})}>Alchohol Free</li>
+                <li onClick={() => onFilterChange({'health': 'celery-free'})}>Celery Free</li>
             </ul>
             <section className={classes["recipe-card-list"]} >
-            {RecipeList}
-             </section>
+                {RecipeList}
+            </section>
         </>
     );
 }

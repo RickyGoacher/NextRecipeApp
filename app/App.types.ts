@@ -2,6 +2,7 @@ export interface RecipeParamsInterface {
     diet: string;
     mealType: string;
     dishType: string;
+    health: string;
 }
 
 export interface RecipeDataInterface {
