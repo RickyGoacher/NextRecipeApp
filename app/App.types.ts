@@ -151,3 +151,26 @@ export interface RecipeInterface {
         }
     >    
 }
+
+export interface FilterOptionInterface {
+    MealType: Array<{
+        label: string;
+        param: string;
+    }>;
+    Diet: Array<{
+        label: string;
+        param: string;
+    }>;
+    Health: Array<{
+        label: string;
+        param: string;
+    }>;
+    CuisineType: Array<{
+        label: string;
+        param: string;
+    }>;
+    DishType: Array<{
+        label: string;
+        param: string;
+    }>;
+}
