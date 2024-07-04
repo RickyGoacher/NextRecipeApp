@@ -1,3 +1,10 @@
+.content-wrapper {
+    display: flex;
+    padding: 1rem;
+    border-top: solid 1px grey;
+    border-bottom: solid 1px grey;
+}
+
 .main h1 {
     text-align: center;
     margin-bottom: 1rem;

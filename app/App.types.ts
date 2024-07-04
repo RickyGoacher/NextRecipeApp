@@ -174,3 +174,11 @@ export interface FilterOptionInterface {
         param: string;
     }>;
 }
+
+export interface FilterOptionParamInterface {
+    MealType: Array<string>;
+    Diet: Array<string>;
+    Health: Array<string>;
+    CuisineType: Array<string>;
+    DishType: Array<string>;
+}

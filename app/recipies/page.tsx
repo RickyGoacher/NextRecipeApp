@@ -6,7 +6,9 @@ const Page = () => {
     return (
         <main className={classes["main"]}>
             <h1> Recipe Page </h1>
-            <RecipeFilterSelect />
+            <section className={classes["content-wrapper"]}>
+                <RecipeFilterSelect />
+            </section>
         </main>
     );
 }
