@@ -16,7 +16,6 @@ const RecipeFilterSelect = () => {
             }, 3000)
         }
         setLoader(false);
-        console.log('runs')
     }, [initialRecipies]);
 
     const [getData, setData] = useState<RecipeDataInterface>();
@@ -62,16 +61,12 @@ const RecipeFilterSelect = () => {
         );
 
         const updatedMealTypes = getSelectedFilters[type as keyof FilterOptionInterface].map((item, index) => {
-            console.log(item, 'the item')
             return (updatedCheckedState[index] == true) ? FilterOptions[type as keyof FilterOptionInterface][index].param : '';
         });
 
         const updatedMealTypesLabels = getSelectedFilters[type as keyof FilterOptionInterface].map((item, index) => {
-            console.log(item, 'the item')
             return (updatedCheckedState[index] == true) ? FilterOptions[type as keyof FilterOptionInterface][index].label : '';
         });
-
-        console.log(updatedMealTypes, 'update meal')
 
         setSelectedFilters((oldState => {
             return {...oldState, [type as keyof FilterOptionInterface]: updatedMealTypes}
@@ -90,7 +85,6 @@ const RecipeFilterSelect = () => {
     });
 
     async function onSubmit () {
-        console.log(getSelectedFilters, 'this ')
         setData(await getRecipies(getSelectedFilters))
     }
 
@@ -110,99 +104,45 @@ const RecipeFilterSelect = () => {
     }
 
     const SelectedFilterDisplay = Object.entries(getSelectedFilters).map(type => {
-        return getSelectedFiltersLabels[type[0] as keyof FilterOptionInterface].map(item => {
-            return item !== '' ? <span key={item}>{item}</span> : '';
+        return getSelectedFiltersLabels[type[0] as keyof FilterOptionInterface].map((item, index )=> {
+            return item !== '' ? <span key={item}>{item} <span onClick={(e) => handleCheckboxChange(index, item, type[0])}>X</span></span> : '';
         });
     }).flat();
 
+    const RenderFilters = Object.entries(FilterOptions).map(item => {
+        return (
+            <div className={classes['filter-container']} key={item[0]}>
+                <span>{item[0]}:</span>
+                <ul className={classes["filter-list"]}>
+                    {FilterOptions[item[0] as keyof FilterOptionInterface].map((filter, index) => (
+                        <label key={index}>
+                            <input
+                                type="checkbox"
+                                checked={getCheckedStatus[item[0] as keyof FilterOptionInterface][index]}
+                                onChange={(e) => handleCheckboxChange(index, filter, item[0])}
+                            />
+                            <span>{filter.label}</span>
+                        </label>
+                    ))}
+                </ul>
+            </div>
+        );
+    });
+
     return (
         <>
-            <div className={classes['sidebar']}>
+            <aside className={classes['sidebar']}>
                 <div className={classes['selected-filters']}>
                     {SelectedFilterDisplay}
                 </div>
-                <div className={classes['filter-container']}>
-                <span>Meal Type:</span>
-                <ul className={classes["filter-list"]}>
-                    {FilterOptions.MealType.map((filter, index) => (
-                        <label key={index}>
-                            <input
-                                type="checkbox"
-                                checked={getCheckedStatus.MealType[index]}
-                                onChange={(e) => handleCheckboxChange(index, filter, 'MealType')}
-                            />
-                            <span>{filter.label}</span>
-                        </label>
-                    ))}
-                </ul>
-                </div>
-                <div className={classes['filter-container']}>
-                <span>Diet:</span>
-                <ul className={classes["filter-list"]}>
-                    {FilterOptions.Diet.map((filter, index) => (
-                        <label key={index}>
-                            <input
-                                type="checkbox"
-                                checked={getCheckedStatus.Diet[index]}
-                                onChange={(e) => handleCheckboxChange(index, filter, 'Diet')}
-                            />
-                            <span>{filter.label}</span>
-                        </label>
-                    ))}
-                </ul>
-                </div>
-                <div className={classes['filter-container']}>
-                <span>Health:</span>
-                <ul className={classes["filter-list"]}>
-                    {FilterOptions.Health.map((filter, index) => (
-                        <label key={index}>
-                            <input
-                                type="checkbox"
-                                checked={getCheckedStatus.Health[index]}
-                                onChange={(e) => handleCheckboxChange(index, filter, 'Health')}
-                            />
-                            <span>{filter.label}</span>
-                        </label>
-                    ))}
-                </ul>
-                </div>
-                <div className={classes['filter-container']}>
-                <span>Cuisine Type:</span>
-                <ul className={classes["filter-list"]}>
-                    {FilterOptions.CuisineType.map((filter, index) => (
-                        <label key={index}>
-                            <input
-                                type="checkbox"
-                                checked={getCheckedStatus.CuisineType[index]}
-                                onChange={(e) => handleCheckboxChange(index, filter, 'CuisineType')}
-                            />
-                            <span>{filter.label}</span>
-                        </label>
-                    ))}
-                </ul>
-                </div>
-                <div className={classes['filter-container']}>
-                <span>Dish Type:</span>
-                <ul className={classes["filter-list"]}>
-                    {FilterOptions.DishType.map((filter, index) => (
-                        <label key={index}>
-                            <input
-                                type="checkbox"
-                                checked={getCheckedStatus.DishType[index]}
-                                onChange={(e) => handleCheckboxChange(index, filter, 'DishType')}
-                            />
-                            <span>{filter.label}</span>
-                        </label>
-                    ))}
-                </ul>
-                </div>
+                {RenderFilters}
                 <div className={classes["button-container"]}>
                 <button onClick={onSubmit}>Apply Filters</button>
                 <button onClick={onClear}>Clear Filters</button>
                 </div>
-            </div>
+            </aside>
             <section className={classes["recipe-card-list"]} >
-                {RecipeList}
+                { RecipeList?.length ? RecipeList : <h3>No Recipies Found.</h3>}
             </section>
         </>
     );
