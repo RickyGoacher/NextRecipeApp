@@ -6,17 +6,25 @@ import RecipeCard from "../RecipeCard/RecipeCard";
 import classes from "@/components/RecipeFilter/RecipeFilter.module.css";
 import { RecipeDataInterface, FilterOptionInterface, FilterOptionParamInterface } from "@/app/App.types";
 import { FilterOptions } from "@/api/filters";
+import Loader from "../Loader/Loader";
 
 const RecipeFilterSelect = () => {
 
     useEffect(() => {
-        if(getLoader) {
+        if(getFirstLoad) {
             setTimeout(() => {
                 initialRecipies();
-            }, 3000)
+                setFirstLoad(false);
+            }, 2000)
         }
-        setLoader(false);
+        if(getLoader) {
+            setTimeout(() => {
+                setLoader(false);
+            }, 2000)
+        }
     }, [initialRecipies]);
+
+    const [getFirstLoad, setFirstLoad] = useState<Boolean>(true)
 
     const [getData, setData] = useState<RecipeDataInterface>();
 
@@ -85,12 +93,14 @@ const RecipeFilterSelect = () => {
     });
 
     async function onSubmit () {
-        setData(await getRecipies(getSelectedFilters))
+        setData(await getRecipies(getSelectedFilters));
+        setLoader(true);
     }
 
     async function onClear () {
         initialRecipies();
         setCheckedStatus(DefaultChecked);
+        setLoader(true);
     }
 
     async function initialRecipies() {
@@ -105,7 +115,7 @@ const RecipeFilterSelect = () => {
 
     const SelectedFilterDisplay = Object.entries(getSelectedFilters).map(type => {
         return getSelectedFiltersLabels[type[0] as keyof FilterOptionInterface].map((item, index )=> {
-            return item !== '' ? <span key={item}>{item} <span onClick={(e) => handleCheckboxChange(index, item, type[0])}>X</span></span> : '';
+            return item !== '' && <span key={item}>{item} <span onClick={(e) => handleCheckboxChange(index, item, type[0])}>X</span></span>;
         });
     }).flat();
 
@@ -132,9 +142,14 @@ const RecipeFilterSelect = () => {
     return (
         <>
             <aside className={classes['sidebar']}>
-                <div className={classes['selected-filters']}>
-                    {SelectedFilterDisplay}
+                {SelectedFilterDisplay.length &&
+                <div className={classes['selected-filters-container']}>
+                    <strong>Selected Filters:</strong>
+                    <div className={classes['selected-filters']}>
+                        {SelectedFilterDisplay}
+                    </div>
                 </div>
+                }
                 {RenderFilters}
                 <div className={classes["button-container"]}>
                 <button onClick={onSubmit}>Apply Filters</button>
@@ -142,6 +157,7 @@ const RecipeFilterSelect = () => {
                 </div>
             </aside>
             <section className={classes["recipe-card-list"]} >
+                <Loader isActive={getLoader}/>
                 { RecipeList?.length ? RecipeList : <h3>No Recipies Found.</h3>}
             </section>
         </>

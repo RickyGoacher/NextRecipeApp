@@ -1,0 +1,40 @@
+.loader-container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: black;
+    opacity: .2;
+}
+
+.loader::after {
+    animation: rotateAnimation 2s linear infinite;
+    content: "";
+    mask-image: url('../../app/images/arrows-rotate-solid.svg');
+    display: block;
+    width: 100px;
+    height: 100px;
+    mask-repeat: no-repeat;
+    background-color: white;
+}
+
+@keyframes rotateAnimation {
+    0%{
+       transform: rotate(0deg);
+      }
+   100%{
+       transform: rotate(360deg);
+      }
+}

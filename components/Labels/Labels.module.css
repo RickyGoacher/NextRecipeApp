@@ -1,0 +1,12 @@
+.label-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 1rem;
+}
+
+.label {
+    padding: .5rem 1rem;
+    background-color: aquamarine;
+}

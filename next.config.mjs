@@ -8,6 +8,12 @@ const nextConfig = {
               port: '',
               pathname: '/web-img/**',
             },
+            {
+              protocol: 'https',
+              hostname: 'www.edamam.com',
+              port: '',
+              pathname: '/food-img/**',
+            }
           ],
     },
 };

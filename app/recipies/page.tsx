@@ -5,7 +5,9 @@ import React from "react";
 const Page = () => {
     return (
         <main className={classes["main"]}>
-            <h1> Recipe Page </h1>
+            <section className={classes['title-container']}>
+                <h1> Find a Recipe </h1>
+            </section>
             <section className={classes["content-wrapper"]}>
                 <RecipeFilterSelect />
             </section>
