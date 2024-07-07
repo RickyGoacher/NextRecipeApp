@@ -4,8 +4,8 @@ import Link from "next/link";
 import Labels from "@/components/Labels/Labels";
 import IngredientLines from "@/components/IngredientLines/IngredientLines";
 import InformationTable from "@/components/InformationTable/InformationTable";
-import Ingredients from "@/components/Ingredients/Ingredients";
 import classes from "@/app/recipies/[slug]/Page.module.css";
+import { TotalDailyInterface, TotalNutrientsInterface } from "@/app/App.types";
 
 interface Params {
     params: {
@@ -19,13 +19,8 @@ const fetchRecipe = async (slug:string) => {
 }
 
 const Page = async ({params}:Params) => {
-    console.log(params, 'slug')
     const Slug = params.slug; 
-
     const data = await fetchRecipe(Slug);
-
-    console.log(data.recipe.totalNutrients, 'the dataaaaaaaaaaaaaaaaaaaa')
-
     const GetTitle = data.recipe.label;
     const GetBannerImage = data.recipe.images.REGULAR.url;
     const GetHealthLabel = data.recipe.healthLabels;
@@ -40,9 +35,8 @@ const Page = async ({params}:Params) => {
     const GetCalories = data.recipe.calories;
     const GetYield = data.recipe.yield;
     const GetTotalTime = data.recipe.totalTime;
-    const GetTotalNutrients = data.recipe.totalNutrients;
-    const GetTotalDaily = data.recipe.totalDaily;
-    console.log(data.recipe.ingredients)
+    const GetTotalNutrients:TotalNutrientsInterface = data.recipe.totalNutrients;
+    const GetTotalDaily:TotalDailyInterface = data.recipe.totalDaily;
     let GetHours = Math.floor(GetTotalTime / 60);;
     let GetMinutes = GetTotalTime % 60;
 
@@ -95,7 +89,7 @@ const Page = async ({params}:Params) => {
                 </div>
             </section>
         </main>
-    )
+    );
 }
 
 export default Page;
