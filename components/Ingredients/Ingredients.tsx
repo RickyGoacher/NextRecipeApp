@@ -19,7 +19,7 @@ const Ingredients = ({props}:IngredientInterface) => {
 
     const GenerateIngredients = props.map(item => {
         return (
-            <div>
+            <div key={item.text}>
                 <span>{item.text}</span>
                 <span>{item.quantity}</span>
                 <span>{item.measure}</span>
