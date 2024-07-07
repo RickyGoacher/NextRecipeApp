@@ -1,0 +1,15 @@
+.table-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.table-row {
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.table-row:nth-child(even) {
+    background-color: var(--secondary-colour);
+}

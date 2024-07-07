@@ -1,15 +1,17 @@
+import classes from "@/components/IngredientLines/IngredientLines.module.css";
+
 const IngredientLines = ({props}) => {
 
     const Ingredients = props.map(item => {
         return (
-            <p key={item}>{item}</p>
+            <li key={item}><span>{item}</span></li>
         )
     })
 
     return (
-        <div>
+        <ul className={classes["ingredient-list"]}>
             {Ingredients}
-        </div>
+        </ul>
     )
 
 }

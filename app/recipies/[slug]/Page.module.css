@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: row;
     padding: 1rem;
+    background-color: var(--tertiary-colour);
 }
 
 .image-container {
@@ -10,12 +11,12 @@
     align-items: center;
     width: 50%;
     padding: 2rem;
-    background-color: blue;
 }
 
 .image-container img {
     padding: 1rem;
     background-color: white;
+    transform: rotate(6deg);
 }
 
 .text-container {
@@ -31,10 +32,53 @@
     text-align: center;
 }
 
+.filter-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--secondary-colour);
+    padding: 1rem;
+    padding-top: 2rem;
+}
+
+.filter-container h2 {
+    width: 100%;
+    text-align: center;
+    color: var(--quarternary-colour);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    border-bottom: solid 4px var(--quarternary-colour);
+    padding-bottom: 1rem;
+}
+
+.filter-container a {
+    color: var(--quarternary-colour);
+}
+
+.filter-container a:hover {
+    color: var(--primary-colour);
+}
+
+.filter-container > strong {
+    color: var(--quarternary-colour);
+    margin-top: 1rem;
+    padding: .5rem;
+    background-color: var(--primary-colour);
+}
+
+.filter-container .options {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-transform: capitalize;
+}
+
 .content-section {
     display: flex;
     flex-direction: row;
     padding: 1rem;
+    background-color: var(--primary-colour);
 }
 
 .content {
@@ -42,21 +86,54 @@
     flex-direction: column;
     padding: 1rem;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     width: 50%;
+}
+
+.content:first-child {
+    border-right: solid 4px var(--tertiary-colour);
+    justify-content: flex-start;
 }
 
 .content p {
     font-size: 1.2rem;
 }
 
+.content h2 {
+    width: 100%;
+    text-align: center;
+    padding: 1rem;
+    padding-top: 0;
+    color: var(--tertiary-colour);
+    border-bottom: solid 4px var(--tertiary-colour);
+}
+
 .content:first-child h2 {
-    text-align: left;
     margin-bottom: 1rem;
 }
 
-.content:first-child {
-    background-color: blue;
-    color: white;
-    align-items: flex-start;
+.nutrient-content-section {
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+}
+
+.nutrient-content {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    align-items: center;
+    width: 50%;
+}
+
+.nutrient-content:first-child {
+    border-right: solid 4px var(--primary-colour);
+}
+
+.nutrient-content h2 {
+    width: 100%;
+    padding: 1rem;
+    padding-top: 0;
+    text-align: center;
+    border-bottom: solid 4px var(--primary-colour);
 }

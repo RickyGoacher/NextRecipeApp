@@ -1,7 +1,9 @@
 import { getRecipe } from "@/api/recipe";
 import Image from "next/image";
+import Link from "next/link";
 import Labels from "@/components/Labels/Labels";
 import IngredientLines from "@/components/IngredientLines/IngredientLines";
+import InformationTable from "@/components/InformationTable/InformationTable";
 import Ingredients from "@/components/Ingredients/Ingredients";
 import classes from "@/app/recipies/[slug]/Page.module.css";
 
@@ -22,7 +24,7 @@ const Page = async ({params}:Params) => {
 
     const data = await fetchRecipe(Slug);
 
-    console.log(data, 'the dataaaaaaaaaaaaaaaaaaaa')
+    console.log(data.recipe.totalNutrients, 'the dataaaaaaaaaaaaaaaaaaaa')
 
     const GetTitle = data.recipe.label;
     const GetBannerImage = data.recipe.images.REGULAR.url;
@@ -31,8 +33,18 @@ const Page = async ({params}:Params) => {
     const GetCautions = data.recipe.cautions;
     const GetIngredientLines = data.recipe.ingredientLines;
     const GetIngredients = data.recipe.ingredients;
+    const GetCuisineType = data.recipe.cuisineType;
+    const GetMealType = data.recipe.mealType;
+    const GetDishType = data.recipe.dishType;
+    const GetUrl = data.recipe.url;
+    const GetCalories = data.recipe.calories;
+    const GetYield = data.recipe.yield;
+    const GetTotalTime = data.recipe.totalTime;
+    const GetTotalNutrients = data.recipe.totalNutrients;
+    const GetTotalDaily = data.recipe.totalDaily;
     console.log(data.recipe.ingredients)
-
+    let GetHours = Math.floor(GetTotalTime / 60);;
+    let GetMinutes = GetTotalTime % 60;
 
     return (
         <main>
@@ -47,7 +59,19 @@ const Page = async ({params}:Params) => {
                 </div>
                 <div className={classes["text-container"]}>
                     <h1>{GetTitle}</h1>
-                    <Labels props={GetDietLabels} />
+                    {GetDietLabels.length > 0 && <Labels props={GetDietLabels} />}
+                    {GetCautions.length > 0 && <Labels props={GetCautions} />}
+                </div>
+            </section>
+            <section className={classes["filter-container"]}>
+                <h2>Original Recipe (Preparation): <Link href={GetUrl}>{GetTitle}</Link></h2>
+                <strong>Time: {GetHours > 0 && GetHours + 'h'} {GetMinutes > 0 && GetMinutes + 'm'}</strong>
+                <strong>Servings: {GetYield}</strong>
+                <strong>Calories / Serving: {Math.round(GetCalories / GetYield)}</strong>
+                <div className={classes["options"]}>
+                    {GetCuisineType.length > 0 && <Labels props={GetCuisineType}/>}
+                    {GetMealType.length > 0 && <Labels props={GetMealType}/>}
+                    {GetDishType.length > 0 && <Labels props={GetDishType}/>}
                 </div>
             </section>
             <section className={classes["content-section"]}>
@@ -60,10 +84,16 @@ const Page = async ({params}:Params) => {
                     <Labels props={GetHealthLabel} />
                 </div>
             </section>
-            <h2>Cautions</h2>
-            <Labels props={GetCautions} />
-            
-            <Ingredients props={GetIngredients} />
+            <section className={classes["nutrient-content-section"]}>
+                <div className={classes["nutrient-content"]}>
+                    <h2>Total Nutrients</h2>
+                    <InformationTable props={GetTotalNutrients}/>
+                </div>
+                <div className={classes["nutrient-content"]}>
+                    <h2>Total Daily</h2>
+                    <InformationTable props={GetTotalDaily}/>
+                </div>
+            </section>
         </main>
     )
 }

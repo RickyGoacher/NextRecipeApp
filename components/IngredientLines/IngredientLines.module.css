@@ -1,0 +1,8 @@
+.ingredient-list {
+    margin-left: 1.5rem;
+}
+
+.ingredient-list li {
+    color: var(--tertiary-colour);
+    margin-bottom: .5rem;
+}

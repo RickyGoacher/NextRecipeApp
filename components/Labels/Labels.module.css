@@ -8,5 +8,5 @@
 
 .label {
     padding: .5rem 1rem;
-    background-color: aquamarine;
+    background-color: var(--quarternary-colour);
 }
