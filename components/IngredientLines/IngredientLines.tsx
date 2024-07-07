@@ -4,7 +4,7 @@ const IngredientLines = ({props}) => {
 
     const Ingredients = props.map(item => {
         return (
-            <li key={item}><span>{item}</span></li>
+            <li key={item + Math.random()}><span>{item}</span></li>
         )
     })
 
@@ -16,4 +16,4 @@ const IngredientLines = ({props}) => {
 
 }
 
-export default IngredientLines
+export default IngredientLines;
