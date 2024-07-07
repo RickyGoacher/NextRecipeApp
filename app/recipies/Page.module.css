@@ -1,12 +1,15 @@
 .content-wrapper {
     display: flex;
     padding: 1rem;
-    border-top: solid 1px grey;
-    border-bottom: solid 1px grey;
+    border-top: solid 4px var(--primary-colour);
+    border-bottom: solid 4px var(--primary-colour);
+    background-color: var(--quarternary-colour);
 }
 
 .title-container {
     padding: 1rem;
+    background-color: var(--primary-colour);
+    color: white;
 }
 
 .main h1 {

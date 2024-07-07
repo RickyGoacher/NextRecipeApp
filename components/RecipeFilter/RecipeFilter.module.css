@@ -5,12 +5,9 @@
     overflow-y: scroll;
     padding: 1rem;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     gap: 12px;
-}
-
-.recipe-card-list h3 {
-    text-align: center;
 }
 
 .sidebar {
@@ -19,7 +16,7 @@
     min-width: 300px;
     height: 90vh;
     overflow-y: scroll;
-    border-right: solid 1px grey;
+    border-right: solid 4px var(--tertiary-colour);
 }
 
 .filter-container {
@@ -27,7 +24,7 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
-    border-bottom: solid 1px grey;
+    border-bottom: solid 4px var(--tertiary-colour);
     padding: 1rem;
 }
 
@@ -74,9 +71,13 @@
 .selected-filters-container {
     display: flex;
     flex-direction: column;
-    border-bottom: solid 1px grey;
-    padding-bottom: 1rem;
     gap: 6px;
+}
+
+.selected-filters-container strong {
+    padding: 1rem;
+    background-color: var(--tertiary-colour);
+    color: var(--primary-colour);
 }
 
 .selected-filters {
@@ -87,7 +88,7 @@
 
 .selected-filters span {
     padding: .5rem 1rem;
-    background-color: grey;
+    background-color: var(--primary-colour);
     color: white;
 }
 

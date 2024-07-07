@@ -15,7 +15,7 @@
     right: 0;
     top: 0;
     bottom: 0;
-    background-color: black;
+    background-color: var(--secondary-colour);
     opacity: .2;
 }
 
@@ -27,7 +27,7 @@
     width: 100px;
     height: 100px;
     mask-repeat: no-repeat;
-    background-color: white;
+    background-color: var(--primary-colour);
 }
 
 @keyframes rotateAnimation {

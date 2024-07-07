@@ -1,11 +1,28 @@
 .recipe-card {
-    width: 100%;
+    width: 49%;
     display: flex;
     flex-direction: row;
-    border: solid 1px grey;
+    border: solid 4px var(--tertiary-colour);
     padding: 1rem;
     gap: 12px;
     text-align: left;
+   
+}
+
+.recipe-card h3 {
+    text-align: left;
+}
+
+.recipe-card a {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+}
+
+.recipe-card img {
+    padding: 1rem;
+    transform: rotate(6deg);
+    background-color: white;
 }
 
 .recipe-card-info {
@@ -22,7 +39,7 @@
 }
 
 .health-labels span {
-    background-color: red;
+    background-color: var(--tertiary-colour);
     padding: .5rem;
-    color: white;
+    color: var(--primary-colour);
 }

@@ -14,7 +14,7 @@ const RecipeCard = ({props: {recipe: {label, image, totalTime, mealType, dishTyp
     return (
         <div className={classes["recipe-card"]}>
             <Link href={`recipies/${recipeId}`}>
-            <Image alt={label} width={100} height={100} src={image} />
+            <Image alt={label} width={150} height={150} src={image} />
             <div className={classes["recipe-card-info"]}>
                 <h3>{label}</h3>
                 {totalTime > 0 && <span>{totalTime} Minutes</span>}

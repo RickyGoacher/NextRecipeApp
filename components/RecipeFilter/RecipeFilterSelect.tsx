@@ -142,9 +142,9 @@ const RecipeFilterSelect = () => {
     return (
         <>
             <aside className={classes['sidebar']}>
-                {SelectedFilterDisplay.length &&
+                {SelectedFilterDisplay.length > 0 &&
                 <div className={classes['selected-filters-container']}>
-                    <strong>Selected Filters:</strong>
+                    <strong>Filters:</strong>
                     <div className={classes['selected-filters']}>
                         {SelectedFilterDisplay}
                     </div>
