@@ -1,12 +1,11 @@
 .recipe-card {
-    width: 49%;
+    width: 100%;
     display: flex;
     flex-direction: row;
     border: solid 4px var(--tertiary-colour);
     padding: 1rem;
     gap: 12px;
     text-align: left;
-   
 }
 
 .recipe-card h3 {

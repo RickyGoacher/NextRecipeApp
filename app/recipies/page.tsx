@@ -1,6 +1,7 @@
 import classes from "@/app/recipies/Page.module.css";
 import RecipeFilterSelect from "@/components/RecipeFilter/RecipeFilterSelect";
 import React from "react";
+import Image from "next/image";
 
 const Page = () => {
     return (

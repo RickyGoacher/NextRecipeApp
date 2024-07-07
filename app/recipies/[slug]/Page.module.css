@@ -136,3 +136,33 @@
     text-align: center;
     border-bottom: solid 4px var(--primary-colour);
 }
+
+@media screen and (max-width: 768px) {
+    .recipe-header-container {
+        flex-direction: column;
+    }
+    .image-container {
+        width: 100%;
+    }
+    .text-container {
+        width: 100%;
+    }
+    .content-section {
+        flex-direction: column;
+    }
+    .content {
+        width: 100%;
+    }
+    .content:first-child {
+        border: 0;
+    }
+    .nutrient-content-section {
+        flex-direction: column;
+    }
+    .nutrient-content {
+        width: 100%;
+    }
+    .nutrient-content:first-child {
+        border: 0;
+    }
+}

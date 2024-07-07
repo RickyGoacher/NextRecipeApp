@@ -30,6 +30,8 @@ const RecipeFilterSelect = () => {
 
     const [getLoader, setLoader] = useState<Boolean>(true);
 
+    const [getModalOpen, setModalOpen] = useState<Boolean>(false);
+
     const DefaultChecked = {
         MealType: new Array(FilterOptions.MealType.length).fill(false),
         Diet: new Array(FilterOptions.Diet.length).fill(false),
@@ -139,9 +141,19 @@ const RecipeFilterSelect = () => {
         );
     });
 
+    function closeFilterModal() {
+
+    }
+
     return (
         <>
-            <aside className={classes['sidebar']}>
+            <div className={classes["filter-section-mobile"]}>
+                <button onClick={() => {setModalOpen(true)}}>Filters</button>
+            </div>
+            <aside className={getModalOpen ? classes['sidebar'] + " " + classes["active"] : classes['sidebar']}>
+                <div className={classes["mobile-close"]}>
+                    <span onClick={() => {setModalOpen(false)}}> X </span>
+                </div>
                 {SelectedFilterDisplay.length > 0 &&
                 <div className={classes['selected-filters-container']}>
                     <strong>Filters:</strong>

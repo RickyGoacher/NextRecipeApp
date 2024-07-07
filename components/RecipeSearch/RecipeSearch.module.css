@@ -1,6 +1,9 @@
 .search-container {
-    width: 400px;
+    max-width: 400px;
+    width: 100%;
+    margin-left: 1rem;
     position: relative;
+    margin-right: 1rem;
 }
 
 .search-container input {

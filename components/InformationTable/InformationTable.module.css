@@ -13,3 +13,12 @@
 .table-row:nth-child(even) {
     background-color: var(--secondary-colour);
 }
+
+@media screen and (max-width: 768px) {
+    .table-container {
+        width: 100%;
+    }
+    .table-row {
+        width: 100%;
+    }
+}

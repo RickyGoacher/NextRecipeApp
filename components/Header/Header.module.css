@@ -5,7 +5,15 @@
     position: relative;
     z-index: 100;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    border-bottom: solid 4px var(--tertiary-colour)
+    border-bottom: solid 4px var(--tertiary-colour);
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.header > a {
+    color: var(--quarternary-colour);
+    padding: .5rem;
+    border: solid 2px var(--quarternary-colour);
 }
