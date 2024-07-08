@@ -66,10 +66,19 @@
 
 .button-container button {
     padding: 1rem 2rem;
-    background-color: #6b9080;
     border: 0;
-    color: white;
     height: 48px;
+}
+
+.button-container button:first-child {
+    background-color: var(--primary-colour);
+    color: var(--quarternary-colour);
+}
+
+.button-container button:last-child {
+    background-color: var(--tertiary-colour);
+    border: solid 2px var(--primary-colour);
+    color: var(--primary-colour);
 }
 
 .selected-filters-container {
@@ -116,6 +125,7 @@
         align-items: center;
         margin-bottom: 6px;
         background-color: var(--primary-colour);
+        order: -2;
     }
     .mobile-close span {
         font-size: 1.5rem;
@@ -126,6 +136,8 @@
     }
     .sidebar {
         position: absolute;
+        display: flex;
+        flex-direction: column;
         left: -300px;
         top: 0;
         height: 100vh;
@@ -156,5 +168,14 @@
         height: auto;
         min-height: 400px;
         overflow-y: auto;
+    }
+
+    .button-container {
+        order: -1;
+    }
+
+    .button-container button {
+        padding: 0;
+        height: 40px;
     }
 }
