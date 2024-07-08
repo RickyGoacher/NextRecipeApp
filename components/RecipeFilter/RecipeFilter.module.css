@@ -65,7 +65,11 @@
 }
 
 .button-container button {
-    padding: .5rem 2rem;
+    padding: 1rem 2rem;
+    background-color: #6b9080;
+    border: 0;
+    color: white;
+    height:48px;
 }
 
 .selected-filters-container {
@@ -111,12 +115,14 @@
         justify-content: flex-end;
         align-items: center;
         margin-bottom: 6px;
+        background-color: var(--primary-colour);
     }
     .mobile-close span {
         font-size: 1.5rem;
         padding: .5rem 1rem;
         color: var(--quarternary-colour);
         background-color: var(--primary-colour);
+        border-left: solid 2px var(--quarternary-colour);
     }
     .sidebar {
         position: absolute;
@@ -137,6 +143,7 @@
     }
 
     .filter-section-mobile button {
+        width: 100%;
         padding: 1rem 3rem;
         background-color: var(--primary-colour);
         color: var(--quarternary-colour);

@@ -20,7 +20,7 @@ const RecipeSearch = () => {
                 setIsActive(true);
                 setSearchResults(data)
             }
-          }, 3000);
+          }, 1000);
 
           return () => clearTimeout(delayDebounceFn);
 

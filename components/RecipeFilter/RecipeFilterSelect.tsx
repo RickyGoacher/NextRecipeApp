@@ -20,7 +20,7 @@ const RecipeFilterSelect = () => {
         if(getLoader) {
             setTimeout(() => {
                 setLoader(false);
-            }, 2000)
+            }, 3000)
         }
     }, [initialRecipies]);
 
@@ -97,12 +97,14 @@ const RecipeFilterSelect = () => {
     async function onSubmit () {
         setData(await getRecipies(getSelectedFilters));
         setLoader(true);
+        setModalOpen(false);
     }
 
     async function onClear () {
         initialRecipies();
         setCheckedStatus(DefaultChecked);
         setLoader(true);
+        setModalOpen(false);
     }
 
     async function initialRecipies() {
@@ -140,10 +142,6 @@ const RecipeFilterSelect = () => {
             </div>
         );
     });
-
-    function closeFilterModal() {
-
-    }
 
     return (
         <>

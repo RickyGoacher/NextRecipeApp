@@ -32,3 +32,11 @@
 .result:nth-child(even) {
     background-color: var(--quarternary-colour);
 }
+
+@media screen and (max-width: 768px) {
+    .search-container {
+        max-width: unset;
+        width: 100%;
+        margin: 0;
+    }
+}

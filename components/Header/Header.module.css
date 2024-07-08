@@ -17,3 +17,18 @@
     padding: .5rem;
     border: solid 2px var(--quarternary-colour);
 }
+
+@media screen and (max-width: 768px) {
+    .header {
+        padding: 1rem;
+        height: unset;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+    .header > a {
+        width: 48.5%;
+        order: -1;
+        text-align: center;
+    }
+}

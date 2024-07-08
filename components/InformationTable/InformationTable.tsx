@@ -12,7 +12,7 @@ const InformationTable = ({props}:PROPS) => {
         return (
             <div key={item[1].label} className={classes["table-row"]}>
                 <span>{item[1].label}</span>
-                <span>{item[1].quantity} {item[1].unit}</span>
+                <span>{Math.round(item[1].quantity)} {item[1].unit}</span>
             </div>
         );
     });
