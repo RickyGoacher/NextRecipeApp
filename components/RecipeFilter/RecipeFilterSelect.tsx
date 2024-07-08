@@ -162,11 +162,11 @@ const RecipeFilterSelect = () => {
                 }
                 {RenderFilters}
                 <div className={classes["button-container"]}>
-                <button onClick={onSubmit}>Apply Filters</button>
-                <button onClick={onClear}>Clear Filters</button>
+                    <button onClick={onSubmit}>Apply Filters</button>
+                    <button onClick={onClear}>Clear Filters</button>
                 </div>
             </aside>
-            <section className={classes["recipe-card-list"]} >
+            <section className={classes["recipe-card-list"]} onClick={() => {setModalOpen(false)}}>
                 <Loader isActive={getLoader}/>
                 { RecipeList?.length ? RecipeList : <h3>No Recipies Found.</h3>}
             </section>
