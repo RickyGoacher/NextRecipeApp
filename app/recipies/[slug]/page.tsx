@@ -58,7 +58,7 @@ const Page = async ({params}:Params) => {
                 </div>
             </section>
             <section className={classes["filter-container"]}>
-                <h2>Original Recipe (Preparation): <Link href={GetUrl}>{GetTitle}</Link></h2>
+                <h2>Original Recipe (Preparation click here): <Link className={classes["recipe-link"]} href={GetUrl}>{GetTitle}</Link></h2>
                 <strong>Time: {GetHours > 0 && GetHours + 'h'} {GetMinutes > 0 && GetMinutes + 'm'}</strong>
                 <strong>Servings: {GetYield}</strong>
                 <strong>Calories / Serving: {Math.round(GetCalories / GetYield)}</strong>

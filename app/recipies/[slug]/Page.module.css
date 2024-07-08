@@ -53,11 +53,16 @@
 }
 
 .filter-container a {
-    color: var(--quarternary-colour);
+    padding: 1rem;
+    background-color: var(--primary-colour);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
 }
 
 .filter-container a:hover {
-    color: var(--primary-colour);
+    color: var(--tertiary-colour);
 }
 
 .filter-container > strong {
@@ -135,6 +140,16 @@
     padding-top: 0;
     text-align: center;
     border-bottom: solid 4px var(--primary-colour);
+}
+
+.recipe-link::after {
+    content: "";
+    mask-image: url('../../../app/images/hand-pointer-regular.svg');
+    display: block;
+    width: 24px;
+    height: 24px;
+    mask-repeat: no-repeat;
+    background-color: var(--quarternary-colour);
 }
 
 @media screen and (max-width: 768px) {
