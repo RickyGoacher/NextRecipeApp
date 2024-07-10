@@ -11,7 +11,7 @@ export default async function Home() {
         <p>Use the search or the recipe listing page to find your next meal!</p>
       </section>
       <section className={styles["section"]}>
-        <Link href="/recipies">Find a Recipe</Link>
+        <Link href="/recipes">Find a Recipe</Link>
       </section>
       <section className={styles["image-section"]}>
       <Image alt="test" src={MainImage} />

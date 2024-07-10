@@ -1,4 +1,4 @@
-import classes from "@/app/recipies/Page.module.css";
+import classes from "@/app/recipes/Page.module.css";
 import RecipeFilterSelect from "@/components/RecipeFilter/RecipeFilterSelect";
 import React from "react";
 import Image from "next/image";

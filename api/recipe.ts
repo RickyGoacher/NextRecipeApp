@@ -6,7 +6,7 @@ interface RecipeData {
     recipe: RecipeInterface
 }
 
-export const getRecipies = async (params:FilterOptionParamInterface) => { 
+export const getRecipes = async (params:FilterOptionParamInterface) => { 
     const Diet = params.Diet.join('');
     const MealType = params.MealType.join('');
     const Health = params.Health.join('');

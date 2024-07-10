@@ -4,7 +4,7 @@ import Link from "next/link";
 import Labels from "@/components/Labels/Labels";
 import IngredientLines from "@/components/IngredientLines/IngredientLines";
 import InformationTable from "@/components/InformationTable/InformationTable";
-import classes from "@/app/recipies/[slug]/Page.module.css";
+import classes from "@/app/recipes/[slug]/Page.module.css";
 import { TotalDailyInterface, TotalNutrientsInterface } from "@/app/App.types";
 
 interface Params {

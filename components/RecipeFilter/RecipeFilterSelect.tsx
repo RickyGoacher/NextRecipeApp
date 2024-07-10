@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from "react";
-import { getRecipies } from "@/api/recipe";
+import { getRecipes } from "@/api/recipe";
 import RecipeCard from "../RecipeCard/RecipeCard";
 import classes from "@/components/RecipeFilter/RecipeFilter.module.css";
 import { RecipeDataInterface, FilterOptionInterface, FilterOptionParamInterface } from "@/app/App.types";
@@ -13,7 +13,7 @@ const RecipeFilterSelect = () => {
     useEffect(() => {
         if(getFirstLoad) {
             setTimeout(() => {
-                initialRecipies();
+                initialRecipes();
                 setFirstLoad(false);
             }, 2000)
         }
@@ -22,7 +22,7 @@ const RecipeFilterSelect = () => {
                 setLoader(false);
             }, 3000)
         }
-    }, [initialRecipies]);
+    }, [initialRecipes]);
 
     const [getFirstLoad, setFirstLoad] = useState<Boolean>(true)
 
@@ -95,20 +95,20 @@ const RecipeFilterSelect = () => {
     });
 
     async function onSubmit () {
-        setData(await getRecipies(getSelectedFilters));
+        setData(await getRecipes(getSelectedFilters));
         setLoader(true);
         setModalOpen(false);
     }
 
     async function onClear () {
-        initialRecipies();
+        initialRecipes();
         setCheckedStatus(DefaultChecked);
         setLoader(true);
         setModalOpen(false);
     }
 
-    async function initialRecipies() {
-        setData(await getRecipies({
+    async function initialRecipes() {
+        setData(await getRecipes({
             MealType: ['&mealType=breakfast'],
             Diet: [''],
             Health: [''],

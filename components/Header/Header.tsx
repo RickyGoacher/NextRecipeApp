@@ -7,7 +7,7 @@ const Header = () => {
         <header className={classes["header"]}>
             <Link href="/">FoodFinder</Link>
             <RecipeSearch/>
-            <Link href="/recipies">Recipies</Link>
+            <Link href="/recipes">Recipes</Link>
         </header>
     );
 }
