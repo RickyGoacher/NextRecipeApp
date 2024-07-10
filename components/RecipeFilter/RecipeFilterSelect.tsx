@@ -168,7 +168,7 @@ const RecipeFilterSelect = () => {
             </aside>
             <section className={classes["recipe-card-list"]} onClick={() => {setModalOpen(false)}}>
                 <Loader isActive={getLoader}/>
-                { RecipeList?.length ? RecipeList : <h3>No Recipies Found.</h3>}
+                { RecipeList?.length ? RecipeList : <h3>No Recipes Found.</h3>}
             </section>
         </>
     );

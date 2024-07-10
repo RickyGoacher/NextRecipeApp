@@ -13,7 +13,7 @@ const RecipeCard = ({props: {recipe: {label, image, totalTime, mealType, dishTyp
     const recipeId = uri.split('#')[1]
     return (
         <div className={classes["recipe-card"]}>
-            <Link href={`recipies/${recipeId}`}>
+            <Link href={`recipes/${recipeId}`}>
             <Image alt={label} width={150} height={150} src={image} />
             <div className={classes["recipe-card-info"]}>
                 <h3>{label}</h3>

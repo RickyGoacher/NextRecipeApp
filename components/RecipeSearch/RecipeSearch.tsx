@@ -42,7 +42,7 @@ const RecipeSearch = () => {
         const recipeId = item.recipe.uri.split('#')[1]
         return (
             <div key={item.recipe.label + Math.random()} className={classes["result"]}>
-                <span><Link href={`/recipies/${recipeId}`}>{item.recipe.label}</Link></span>
+                <span><Link href={`/recipes/${recipeId}`}>{item.recipe.label}</Link></span>
             </div>
         );
     });
